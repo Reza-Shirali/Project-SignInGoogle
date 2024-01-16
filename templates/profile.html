@@ -1,0 +1,18 @@
+{% extends 'layout.html' %} {% block title %}Botanical(Welcome){% endblock %} {%
+block content %}
+
+<div class="container">
+  {% if user.is_authenticated %}
+  <h1 class="user__name">Welcome, {{ user.name }}!</h1>
+  <p class="email__login">Email: {{ user.email }}</p>
+  <div class="profile-picture">
+    <img src="{{ user.profile_pic }}" alt="Google Profile Picture" />
+  </div>
+  <a href="/" class="link__home">Return to Home</a>
+  {% else %}
+  <p>You are not logged in</p>
+  <a href="/google-login" class="btn__sign-in"> Sign In with Google </a>
+  {% endif %}
+</div>
+
+{% endblock %}

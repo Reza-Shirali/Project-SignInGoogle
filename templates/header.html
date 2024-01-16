@@ -1,0 +1,64 @@
+<header>
+  <nav>
+    <section class="left">
+      {% if user.is_authenticated %} {% if request.path == '/profile' %}
+      <a href="/logout" class="button__logout">Logout</a>
+      {% else %}
+      <div class="wrapper__home">
+        <a href="/profile" class="image__profile-wrapper">
+          <img
+            src="{{ user.profile_pic }}"
+            alt="Google Profile Picture"
+            class="image__home"
+          />
+        </a>
+        <a href="/profile" class="btn__profile"> Hello {{ user.name }} ! </a>
+      </div>
+      {% endif %} {% else %}
+      <!-- <div class="wrapper__google">
+        <i class="bi bi-google"></i>
+        <a href="/google-login" class="btn__sign-in"> Sign In </a>
+      </div> -->
+      {% endif %}
+    </section>
+    <section class="wrapper__right">
+      <ul class="right">
+        <li><a href="/">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Books</a></li>
+        <li><a href="#">Contact US</a></li>
+      </ul>
+      <div class="nav__btn">
+        <span class="nav__btn-line"></span>
+      </div>
+      <div class="nav-menu">
+        <h2 class="nav-menu__title">Botanical</h2>
+        <ul class="mobile-menu">
+          <li class="mobile-menu__item">
+            <a href="#" class="mobile-menu__link">Home</a>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="#" class="mobile-menu__link">About</a>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="#" class="mobile-menu__link">Books</a>
+          </li>
+          <li class="mobile-menu__item">
+            <a href="#" class="mobile-menu__link">Contact US</a>
+          </li>
+        </ul>
+        {% if user.is_authenticated %}
+        <div class="nav-menu__links-logout">
+          <a href="/logout" class="button__logout btn__logout">Logout</a>
+        </div>
+        {% else %}
+        <div class="nav-menu__links">
+          <i class="bi bi-google"></i>
+          <a href="/google-login" class="btn__sign-in"> Sign In </a>
+        </div>
+        {% endif %}
+      </div>
+    </section>
+  </nav>
+</header>
+<script src="../static/scripts/app.js"></script>

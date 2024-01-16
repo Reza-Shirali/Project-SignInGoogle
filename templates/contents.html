@@ -1,0 +1,34 @@
+{% extends 'layout.html' %}
+
+{% block title %}contents.title{% endblock %}
+
+{% block content %}
+
+<main class="main__content">
+  <div class="main__content--title">
+    <p class="title">{{ contents.title }}</p>
+  </div>
+  <div class="main__content--caption">
+    <div class="content__caption--left">
+      <img src="{{ contents.image.url }}" alt="{{ contents.image.alt }}" />
+    </div>
+    <div class="content__caption--right">
+      <p>{{ contents.caption }}</p>
+    </div>
+  </div>
+  <div class="social__media">
+    <div class="social__media--icons">
+      <a href="https://telegram.me/share/url?url={{ request_url }}&text={{ contents.shortCaption }}"><i class="bi bi-telegram"></i></a>
+      <a href="http://twitter.com/intent/tweet/?text={{ contents.shortCaption }}&url={{ request_url }}"><i class="bi bi-twitter-x"></i></a>
+      <a href="https://www.facebook.com/sharer/sharer.php?u={{ request_url }}&title={{ contents.title }}&description={{ contents.shortCaption }}"><i class="bi bi-facebook"></i></a>
+      <a href="http://www.linkedin.com/shareArticle?mini=true&url={{ request_url }}&title={{ contents.title }}&summary={{ contents.shortCaption }}&source=https://127.0.0.0:5000"><i class="bi bi-linkedin"></i></a>
+      <a href="whatsapp://send?text={{ request_url }} - {{ contents.shortCaption }}"><i class="bi bi-whatsapp"></i></a>
+    </div>
+    <div class="social__media--author">By: {{ contents.author }}</div>
+  </div>
+  <div class="return__home">
+    <a href="/" class="link__home link__home--content">Return to Home</a>
+  </div>
+</main>
+
+{% endblock %}

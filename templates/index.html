@@ -1,0 +1,48 @@
+{% extends 'layout.html' %} 
+{% block title %}Athletic{% endblock %} 
+
+{% block content %}
+<!-- ==================== Cards ==================================== -->
+{% if user.is_authenticated %}
+<main>
+  <div class="wrapper__card">
+    <div class="wrapper__card--three">
+      {% for content in contents %}
+      <a href="/contents/{{ content.title }}" class="card">
+        <div class="card__img">
+          <img src="{{ content.image.url }}" alt="{{ content.image.alt }}" class="image__card" />
+          <div class="card__img-caption">
+            <p class="caption__image-card">{{ content.shortCaption }}</p>
+          </div>
+          <div class="card__img-user">
+            <div class="user__img">
+              <img src="{{ content.authorImg }}" alt="photo-person" class="user__photo" />
+            </div>
+            <div class="wrapper__user">
+              <p>{{ content.author }}</p>
+              <p class="user__info-caption">{{ content.authorSkill }}</p>
+            </div>
+          </div>
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</main>
+{% else %}
+<!-- ==================== LOgin Form =============================== -->
+<section class="form__login">
+  <div class="wrapper__card--login">
+    <h1 class="card__login--title">Welcome to Athletic</h1>
+    <p class="card__login--caption">
+      To use the site facilities, please LogIn first
+    </p>
+    <div class="wrapper__google--form-login">
+      <i class="bi bi-google"></i>
+      <a href="/google-login" class="btn__sign-in"> Sign In </a>
+    </div>
+  </div>
+</section>
+{% endif %}
+
+{% endblock %}
